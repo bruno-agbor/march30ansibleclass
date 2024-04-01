@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  gather_facts: true
+  become: yes
+
+
+
+  tasks:
+      - name: Print information for each host
+        debug:
+          msg: "Hostname: {{ inventory_hostname}}
