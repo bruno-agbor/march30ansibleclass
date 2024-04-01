@@ -9,4 +9,4 @@
   tasks:
       - name: Print information for each host
         debug:
-          msg: "Hostname: {{ inventory_hostname}}
+          msg: "Hostname: {{ inventory_hostname}}"
