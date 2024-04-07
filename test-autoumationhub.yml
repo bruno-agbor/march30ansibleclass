@@ -1,0 +1,40 @@
+---
+
+- hosts: all
+  become: true
+  gather_facts: True
+
+
+  tasks:
+    - name: Display Operating System Name
+      debug:
+       msg: "Operating System Name: {{ ansible_distribution }}"
+
+    - name: Display Operating System Major Version
+      debug:
+        msg: "Operating System Major Version: {{ ansible_distribution_major_version }}"
+
+    - name: Display Operating System Time
+      debug:
+        msg: "Operating System Time: {{ ansible_date_time.date }} {{ ansible_date_time.time }}"
+
+    - name: Display Operating System BIOS Name
+      debug:
+        msg: "Operating System BIOS Name: {{ ansible_bios_vendor | default('N/A', true)}}"
+
+    - name: Display Operating System IP Address
+      debug:
+        msg: "Operating System IP Address: {{ ansible_default_ipv4.address }}"
+
+    - name: Display Total Memory
+      debug:
+        msg: "Total Memory: {{ ansible_memtotal_mb }} MB"
+
+    - name: Display Python Version
+      debug:
+        msg: "Python Version: {{ ansible_python_version }}"
+
+    - name: Display Hostnames of Nodes in Inventory
+      debug:
+        msg: "Hostname of Node: {{ inventory_hostname }}"
+      with_items: "{{ ansible_play_hosts_all }}"
